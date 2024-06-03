@@ -116,7 +116,7 @@ class SenNet(nn.Module):
 
 
 class SimpleCNN(nn.Module):
-    def __init__(self,  num_classes=10, salt_layer=5, 
+    def __init__(self,  num_classes=10, salt_layer=6, 
                 mean: Union[Tuple[float, ...], float] = None,
                 std: Union[Tuple[float, ...], float] = None,
                 num_input_channels: int = 3
