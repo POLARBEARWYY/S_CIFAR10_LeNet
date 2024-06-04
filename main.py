@@ -44,16 +44,16 @@ if __name__ == "__main__":
         
     # For LeNet
     model = simple_cnn.SimpleCNN(num_classes=args.num_classes, salt_layer=args.salt_layer,
-                                mean =  datasets.CIFAR10_MEAN, 
-                                std = datasets.CIFAR10_STD, 
-                                num_input_channels=args.num_input_channels)
+    #                            mean =  datasets.CIFAR10_MEAN, 
+    #                            std = datasets.CIFAR10_STD, 
+    #                            num_input_channels=args.num_input_channels)
 
-    ## For WideResNet
-    # model = wide_resnet.WideResNet(num_classes = args.num_classes,
-    #                                     width = 3, 
-    #                                     mean =  datasets.CIFAR10_MEAN, 
-    #                                     std = datasets.CIFAR10_STD, 
-    #                                     num_input_channels=args.num_input_channels)
+    # For WideResNet
+    model = wide_resnet.WideResNet(num_classes = args.num_classes,
+                                         width = 3, 
+                                         mean =  datasets.CIFAR10_MEAN, 
+                                         std = datasets.CIFAR10_STD, 
+                                         num_input_channels=args.num_input_channels)
     ## For SaltedWideResNet
     # model = wide_resnet.SaltyWideResNet(num_classes = args.num_classes,
     #                                     width = 3, 
