@@ -55,24 +55,24 @@ if __name__ == "__main__":
     #                               std = datasets.CIFAR10_STD, 
     #                               num_input_channels=args.num_input_channels)
     # For SaltedWideResNet
-    model = wide_resnet.SaltyWideResNet(num_classes = args.num_classes,
-                                         width = 3, 
-                                         mean =  datasets.CIFAR10_MEAN, 
-                                         std = datasets.CIFAR10_STD, 
-                                         num_input_channels=args.num_input_channels)
+    #model = wide_resnet.SaltyWideResNet(num_classes = args.num_classes,
+    #                                     width = 3, 
+    #                                     mean =  datasets.CIFAR10_MEAN, 
+    #                                     std = datasets.CIFAR10_STD, 
+    #                                     num_input_channels=args.num_input_channels)
 
     ## For ConvNet (PAMAP2)
-    # model = simple_cnn.SenNet(salt_layer=args.salt_layer)
+    model = simple_cnn.SenNet(salt_layer=args.salt_layer)
         
     model.to(args.device)
-    #if args.dataset == "cifar10":
-    #    if args.salt_layer == -1:
-    #        summary(model, [(1, args.num_input_channels, 32, 32)], device=args.device)       
-    #    elif 0<= args.salt_layer <=5: 
-    #        summary(model, [(1, args.num_input_channels, 32, 32),(1,1,1,1)], device=args.device)       
-    #    else:
-    #        summary(model, [(1, args.num_input_channels, 32, 32),(1,args.num_classes)], device=args.device)       
-    #elif args.dataset == "pamap":
-    #    summary(model, [(1, 1, 27, 200),(1,1,1,1)], device=args.device)    
+    if args.dataset == "cifar10":
+        if args.salt_layer == -1:
+            summary(model, [(1, args.num_input_channels, 32, 32)], device=args.device)       
+        elif 0<= args.salt_layer <=5: 
+            summary(model, [(1, args.num_input_channels, 32, 32),(1,1,1,1)], device=args.device)       
+        else:
+            summary(model, [(1, args.num_input_channels, 32, 32),(1,args.num_classes)], device=args.device)       
+    elif args.dataset == "pamap":
+        summary(model, [(1, 1, 27, 200),(1,1,1,1)], device=args.device)    
 
     utils.train_test(args, model, dataset, save_model=True)
